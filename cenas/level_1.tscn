@@ -6,7 +6,7 @@
 size = Vector2(645, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfwrq"]
-size = Vector2(20, 257)
+size = Vector2(20, 253.5)
 
 [node name="Level_1" type="Node2D" unique_id=901747428]
 
@@ -14,6 +14,11 @@ size = Vector2(20, 257)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1348933175]
 zoom = Vector2(8, 8)
+position_smoothing_speed = 8.0
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
 
 [node name="temporary_floor" type="StaticBody2D" parent="." unique_id=1751080817]
 
@@ -29,6 +34,7 @@ offset_bottom = 73.0
 color = Color(0.0022132683, 0.0007310465, 0.00012347521, 1)
 
 [node name="Temporary_wall_1" type="StaticBody2D" parent="." unique_id=218574256]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary_wall_1" unique_id=1534630344]
 position = Vector2(298, -63)
@@ -42,6 +48,7 @@ offset_bottom = 63.0
 color = Color(0, 0, 0, 1)
 
 [node name="Temporary_wall_2" type="StaticBody2D" parent="." unique_id=1538580356]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary_wall_2" unique_id=577933961]
 position = Vector2(-67, -63)
@@ -55,9 +62,10 @@ offset_bottom = 61.0
 color = Color(0, 0, 0, 1)
 
 [node name="Temporary_wall_3" type="StaticBody2D" parent="." unique_id=1176486312]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary_wall_3" unique_id=2085310856]
-position = Vector2(42, -133)
+position = Vector2(42, -131.25)
 shape = SubResource("RectangleShape2D_kfwrq")
 
 [node name="ColorRect" type="ColorRect" parent="Temporary_wall_3" unique_id=1158317623]
