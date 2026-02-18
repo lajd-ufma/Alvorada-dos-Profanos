@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dtkf27wv3i44f" path="res://cenas/player.tscn" id="1_4vb8i"]
 [ext_resource type="Script" uid="uid://cigg0cxnnwy7o" path="res://scripts/camera.gd" id="2_kfwrq"]
-[ext_resource type="PackedScene" uid="uid://bjbf4qo1gdq0e" path="res://cenas/rafael.tscn" id="3_8hq6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vb8i"]
 size = Vector2(645, 17)
@@ -77,7 +76,3 @@ offset_top = -259.0
 offset_right = 54.0
 offset_bottom = -8.0
 color = Color(0, 0, 0, 1)
-
-[node name="Rafael" parent="." unique_id=2110402888 instance=ExtResource("3_8hq6r")]
-position = Vector2(225, 37)
-scale = Vector2(0.5, 0.5)
