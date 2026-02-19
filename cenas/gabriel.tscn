@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cynv2lpfs26rj" path="res://assets/Enemies/Sprites/enemy_rpg.png" id="2_s6omv"]
 [ext_resource type="PackedScene" uid="uid://dkqpxlla7oxxm" path="res://cenas/shock_wave.tscn" id="3_acejx"]
 [ext_resource type="Script" uid="uid://d13y6v0m57oid" path="res://cenas/gabriel_body.gd" id="3_gdcay"]
+[ext_resource type="PackedScene" uid="uid://pwjceowvmbia" path="res://cenas/feather.tscn" id="3_tds4j"]
 [ext_resource type="Shader" uid="uid://c2x25qwar67q2" path="res://cenas/gabriel.gdshader" id="5_4ji6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdcay"]
@@ -26,6 +27,8 @@ size = Vector2(39.75, 32)
 script = ExtResource("1_qajb7")
 rain_scene = ExtResource("2_ppkud")
 spacing_factor = 0.75
+feather_scene = ExtResource("3_tds4j")
+feather_spawn_height = 200.0
 ground_y = 600.0
 shake_time = 3.0
 shockwave_scene = ExtResource("3_acejx")

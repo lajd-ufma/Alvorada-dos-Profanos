@@ -18,6 +18,15 @@ extends Node2D
 @export var rain_interval: float = 0.05
 @export var rain_spawn_height: float = -200.0
 
+# ============================================================
+# CONFIGURAÇÃO — PENAS DE FOGO
+# ============================================================
+
+@export var feather_scene: PackedScene
+@export var feather_spawn_interval: float = 0.12
+@export var feather_attack_duration: float = 4.0
+@export var feather_spawn_height: float = -220.0
+@export var feather_horizontal_padding: float = 64.0
 
 # ============================================================
 # CONFIGURAÇÃO DO SLAM
@@ -91,12 +100,16 @@ func _on_attack_timer_timeout():
 	is_attacking = true
 	attack_timer.stop()
 
-	var attack_type = randi() % 2
-
-	if attack_type == 0:
-		await rain_attack_sequence()
-	else:
-		await slam_attack_sequence()
+	#var attack_type = randi() % 3
+#
+	#if attack_type == 0:
+		#await rain_attack_sequence()
+	#elif attack_type == 1:
+		#await slam_attack_sequence()
+	#else:
+		#await feather_attack_sequence()
+	
+	await  feather_attack_sequence()
 
 	is_attacking = false
 	attack_timer.start()
@@ -319,6 +332,46 @@ func spawn_shockwaves():
 	left_wave.direction = -1
 	right_wave.direction = 1
 
+# ============================================================
+# ATAQUE 3 — PENAS DE FOGO (CAÓTICO)
+# ============================================================
+
+func feather_attack_sequence() -> void:
+
+	if feather_scene == null:
+		return
+
+	var cam = get_viewport().get_camera_2d()
+	if cam == null:
+		return
+
+	var elapsed := 0.0
+
+	while elapsed < feather_attack_duration:
+
+		spawn_single_feather(cam)
+
+		await get_tree().create_timer(feather_spawn_interval).timeout
+		elapsed += feather_spawn_interval
+
+func spawn_single_feather(cam: Camera2D) -> void:
+
+	# pega o retângulo visível da câmera NO MUNDO
+	var view_size = get_viewport_rect().size * cam.zoom
+
+	var left_limit  = cam.global_position.x - (view_size.x / 2.0)
+	var right_limit = cam.global_position.x + (view_size.x / 2.0)
+
+	# aplica padding pra não nascer colado na borda
+	left_limit  += feather_horizontal_padding
+	right_limit -= feather_horizontal_padding
+
+	var random_x = randf_range(left_limit, right_limit)
+
+	var feather = feather_scene.instantiate()
+	get_tree().current_scene.add_child(feather)
+
+	feather.global_position = Vector2(random_x, feather_spawn_height)
 
 # ============================================================
 # RECEBER DANO
