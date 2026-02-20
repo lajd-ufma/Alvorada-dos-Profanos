@@ -54,11 +54,14 @@ func _on_tomou_dano(value):
 			print("morreu")
 			get_tree().reload_current_scene()
 		else:
-			var tween_damage :=get_tree().create_tween()
-			var tween_knockback :=get_tree().create_tween()
-			tween_knockback.tween_property(self, "velocity:y", 100, 0.2)
+			var tween_damage :=get_tree().create_tween().set_loops(3)
+			var tween_knockback :=get_tree().create_tween().set_parallel(true)
+			set_collision_mask_value(3, false)
+			tween_knockback.tween_property(self, "velocity", Vector2(-200,150), 0.25)
 			tween_damage.tween_property(self, "modulate", Color.RED, 0.1)
 			tween_damage.tween_property(self, "modulate", Color.WHITE, 0.1)
+			await tween_damage.finished
+			set_collision_mask_value(3, true)
 
 func _physics_process(delta: float) -> void:
 	if is_dashing == false:
