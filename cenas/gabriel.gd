@@ -100,16 +100,15 @@ func _on_attack_timer_timeout():
 	is_attacking = true
 	attack_timer.stop()
 
-	#var attack_type = randi() % 3
-#
-	#if attack_type == 0:
-		#await rain_attack_sequence()
-	#elif attack_type == 1:
-		#await slam_attack_sequence()
-	#else:
-		#await feather_attack_sequence()
+	var attack_type = randi() % 3
+
+	if attack_type == 0:
+		await rain_attack_sequence()
+	elif attack_type == 1:
+		await slam_attack_sequence()
+	else:
+		await feather_attack_sequence()
 	
-	await  feather_attack_sequence()
 
 	is_attacking = false
 	attack_timer.start()
