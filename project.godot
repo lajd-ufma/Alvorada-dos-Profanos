@@ -22,6 +22,9 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 directories/dch_directory={
 "Deus": "res://Dialogic/characters/Deus.dch",
+"Gabriel": "res://Dialogic/characters/Gabriel.dch",
+"Miguel": "res://Dialogic/characters/Miguel.dch",
+"Rafael": "res://Dialogic/characters/Rafael.dch",
 "Rei": "res://Dialogic/characters/Rei.dch"
 }
 directories/dtl_directory={
@@ -33,7 +36,7 @@ layout/style_directory={
 "estilo_introdução": "res://Dialogic/styles/estilo_introdução.tres",
 "estilo_padrão": "res://Dialogic/styles/estilo_padrão.tres"
 }
-layout/style_list=["res://Dialogic/styles/estilo_padrão.tres", "res://Dialogic/styles/estilo_introdução.tres"]
+layout/style_list=["res://Dialogic/styles/estilo_padrão.tres", "res://Dialogic/styles/estilo_introdução.tres", "res://Dialogic/styles/estilo_portrait.tres"]
 layout/default_style="res://Dialogic/styles/estilo_padrão.tres"
 
 [display]
