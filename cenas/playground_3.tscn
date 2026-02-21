@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ctyjejoyx2ogf"]
+
+[ext_resource type="PackedScene" uid="uid://dtkf27wv3i44f" path="res://cenas/player.tscn" id="1_d7ldt"]
+[ext_resource type="PackedScene" uid="uid://dk7fkmainpcop" path="res://cenas/espada_miguel.tscn" id="2_ut42s"]
+[ext_resource type="PackedScene" uid="uid://c7du6jm0c3cfy" path="res://cenas/miguel.tscn" id="3_ut42s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxn0h"]
+size = Vector2(1274.5, 94.5)
+
+[node name="Playground3" type="Node2D" unique_id=1722423041]
+
+[node name="player" parent="." unique_id=832522077 instance=ExtResource("1_d7ldt")]
+position = Vector2(432, 553.00006)
+scale = Vector2(2.5, 2.5)
+move_speed = 200.0
+gravity = 500.0
+jump_speed = 450.0
+acceleration = 350.0
+
+[node name="Chao" type="StaticBody2D" parent="." unique_id=1179989769]
+position = Vector2(642, 669)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=1238572110]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_gxn0h")
+
+[node name="Espada_Miguel" parent="." unique_id=808010027 instance=ExtResource("2_ut42s")]
+position = Vector2(-25, -32)
+
+[node name="Miguel" parent="." unique_id=1087208123 instance=ExtResource("3_ut42s")]
+position = Vector2(607.00006, 322)
+scale = Vector2(4.5, 4.5)
+speed = 50.0
