@@ -52,7 +52,7 @@ func _on_tomou_dano(value):
 		hp.value -= value
 		if hp.value<=0:
 			print("morreu")
-			#get_tree().change_scene_to_file("res://cenas/morte.tscn")
+			call_deferred("morrer")
 		else:
 			var tween_damage :=get_tree().create_tween().set_loops(3)
 			var tween_knockback :=get_tree().create_tween().set_parallel(true)
@@ -199,3 +199,12 @@ func _on_hitbox_down_body_entered(body: Node2D) -> void:
 	tween.tween_property(self, "velocity:y", -100, 0.25)
 	if body.has_signal("tomou_dano"):
 		body.emit_signal("tomou_dano", 20)
+
+func morrer():
+	GameManager.current_scene = get_tree().current_scene.scene_file_path
+	
+	var menu_morte = load("res://cenas/telas/MenuGameOver.tscn").instantiate()
+	
+	get_tree().root.add_child(menu_morte)
+	
+	get_tree().paused = true
