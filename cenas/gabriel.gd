@@ -52,6 +52,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $Path2D/PathFollow2D/Pivot/gabriel_body/AnimationPlayer
 @onready var hp: ProgressBar = $Path2D/PathFollow2D/Pivot/hp
 @onready var body: CharacterBody2D = $Path2D/PathFollow2D/Pivot/gabriel_body
+@onready var collision_shape_2d: CollisionShape2D = $Path2D/PathFollow2D/Pivot/gabriel_body/CollisionShape2D
 
 # ============================================================
 # ESTADO
@@ -377,7 +378,7 @@ func _on_tomou_dano(value):
 
 func _morrer():
 	can_move = false
-	$Path2D/PathFollow2D/Pivot/gabriel_body/CollisionShape2D.queue_free()
+	collision_shape_2d.disabled = true
 	body.set_collision_layer_value(3, false)
 	body.set_collision_mask_value(1, false)
 	set_physics_process(true)
@@ -387,6 +388,9 @@ func _morrer():
 	animation_player.play("morrendo")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	await get_tree().create_timer(3).timeout
+	if get_parent().has_signal("matou_boss"):
+		get_parent().emit_signal("matou_boss")
+	await get_tree().create_timer(1).timeout
 	queue_free()

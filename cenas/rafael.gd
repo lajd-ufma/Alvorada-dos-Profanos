@@ -23,6 +23,7 @@ extends Node2D
 @onready var rafael_spawn_point: Marker2D = $"../rafael_spawn_point"
 @onready var player: CharacterBody2D = $"../player"
 @onready var animation_player: AnimationPlayer = $Path2D/PathFollow2D/rafael_body/AnimationPlayer
+@onready var collision_shape_2d: CollisionShape2D = $Path2D/PathFollow2D/rafael_body/CollisionShape2D
 
 signal tomou_dano
 
@@ -47,7 +48,7 @@ var return_curve := Curve2D.new()
 # =====================================================
 
 func _ready() -> void:
-
+	set_physics_process(false)
 	tomou_dano.connect(_on_tomou_dano)
 
 	# Define curva inicial (ataque horizontal)
@@ -64,12 +65,9 @@ func _ready() -> void:
 	current_state = "horizontal_attack"
 	timer.start()
 
-	## Rotação contínua do boss
-	#tween = get_tree().create_tween()
-	#tween.set_loops()
-	#tween.set_trans(Tween.TRANS_LINEAR)
-	#tween.tween_property(body, "rotation_degrees", 360.0, 2.0).from(0.0)
-
+func _physics_process(delta: float) -> void:
+	body.velocity += body.get_gravity() * delta
+	body.move_and_slide()
 
 # =====================================================
 # LOOP PRINCIPAL
@@ -251,6 +249,8 @@ func _on_tomou_dano(value):
 	hp.value -= value
 
 	if hp.value <= 0:
+		set_process(false)
+		set_physics_process(true)
 		call_deferred("_morrer")
 	else:
 		var damage_tween := get_tree().create_tween()
@@ -261,12 +261,18 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	body.emit_signal("tomou_dano", 3)
 
 func _morrer():
+	body.set_collision_mask_value(1,false)
+	body.set_collision_layer_value(3,false)
+	collision_shape_2d.disabled = true
 	hp.visible = false
-	hitbox_collision_shape_2d.disabled = false
+	hitbox_collision_shape_2d.disabled = true
 	speed_path_follow = 0 
 	animation_player.play("morrendo")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	await get_tree().create_timer(3).timeout
+	if get_parent().has_signal("matou_boss"):
+		get_parent().emit_signal("matou_boss")
+	await get_tree().create_timer(1).timeout
 	queue_free()

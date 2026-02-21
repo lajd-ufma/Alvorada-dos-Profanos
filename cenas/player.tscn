@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dtkf27wv3i44f"]
 
 [ext_resource type="Script" uid="uid://f7by6sfqxjiq" path="res://scripts/player.gd" id="1_unwft"]
-[ext_resource type="Texture2D" uid="uid://0omkwvgeqcsc" path="res://assets/Player/Sprites/Player_hollow_knight.png" id="2_kthid"]
+[ext_resource type="Texture2D" uid="uid://dewk8mqm66877" path="res://assets/Autorais/Reizinho/parado,png.png" id="2_kthid"]
+[ext_resource type="Texture2D" uid="uid://chjjx0l7avl8j" path="res://assets/Autorais/Reizinho/pulandopng.png" id="3_15dsx"]
 [ext_resource type="Script" uid="uid://bkk4ck07264n2" path="res://cenas/camera_2d.gd" id="3_kthid"]
+[ext_resource type="Texture2D" uid="uid://diij1mi0sawth" path="res://assets/Autorais/Reizinho/correndo.andando.png" id="3_xojfc"]
 
 [sub_resource type="Animation" id="Animation_xojfc"]
 length = 0.001
@@ -54,6 +56,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kthid")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_unwft"]
 resource_name = "atack"
@@ -62,22 +100,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("hitbox/atack:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [17, 18, 19, 20]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hitbox/atack:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.15, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -91,22 +117,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("hitbox_down/atack_down:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [25, 26, 27, 28]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hitbox_down/atack_down:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.15, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -120,42 +134,14 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("hitbox/atack_up:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [21, 22, 23, 24]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hitbox/atack_up:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.15, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_15dsx"]
-resource_name = "fall"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [16]
 }
 
 [sub_resource type="Animation" id="Animation_8v4ht"]
@@ -170,31 +156,51 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1396533, 0.27320606, 0.40065834),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kthid")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_4y2i1"]
 resource_name = "jump"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
-
-[sub_resource type="Animation" id="Animation_ogt8j"]
-resource_name = "move"
-loop_mode = 1
+length = 0.6
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -203,10 +209,100 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_15dsx")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ogt8j"]
+resource_name = "move"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xojfc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rijvs"]
@@ -215,20 +311,19 @@ _data = {
 &"atack": SubResource("Animation_unwft"),
 &"atack_down": SubResource("Animation_rijvs"),
 &"atack_up": SubResource("Animation_kthid"),
-&"fall": SubResource("Animation_15dsx"),
 &"idle": SubResource("Animation_8v4ht"),
 &"jump": SubResource("Animation_4y2i1"),
 &"move": SubResource("Animation_ogt8j")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
-size = Vector2(12, 20)
+size = Vector2(12, 27.333334)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15dsx"]
-size = Vector2(27, 8)
+size = Vector2(35.666668, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kthid"]
-size = Vector2(12, 18)
+size = Vector2(11, 23.333334)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kthid"]
 bg_color = Color(0, 0.39215687, 0.08235294, 1)
@@ -267,6 +362,8 @@ corner_radius_bottom_left = 5
 size = Vector2(28.5, 8.5)
 
 [node name="player" type="CharacterBody2D" unique_id=832522077]
+z_index = 2
+scale = Vector2(3, 3)
 collision_mask = 15
 safe_margin = 0.14
 script = ExtResource("1_unwft")
@@ -274,18 +371,20 @@ wall_slide = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838191734]
 texture = ExtResource("2_kthid")
-hframes = 8
-vframes = 7
+hframes = 2
+vframes = 2
 frame = 1
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=2109076097]
 libraries/ = SubResource("AnimationLibrary_rijvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1761846167]
-position = Vector2(0, 12)
+visible = false
+position = Vector2(0, 1.333333)
 shape = SubResource("RectangleShape2D_unwft")
 
 [node name="raycast" type="Node2D" parent="." unique_id=116676859]
+visible = false
 
 [node name="left_ray" type="RayCast2D" parent="raycast" unique_id=1052318870]
 position = Vector2(0, 12)
@@ -298,22 +397,24 @@ target_position = Vector2(14, 0)
 collision_mask = 2
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1513407931]
+visible = false
+position = Vector2(0, -8)
 collision_mask = 6
 
 [node name="atack_up" type="CollisionShape2D" parent="hitbox" unique_id=1601090352]
-position = Vector2(-0.5, -2)
+position = Vector2(1.4999998, -8.833334)
 shape = SubResource("RectangleShape2D_15dsx")
 disabled = true
 debug_color = Color(0, 0.6402141, 0.35792157, 0.41960785)
 
 [node name="atack" type="CollisionShape2D" parent="hitbox" unique_id=334608476]
-position = Vector2(12, 11)
+position = Vector2(12.5, 8.333333)
 shape = SubResource("RectangleShape2D_kthid")
 disabled = true
 debug_color = Color(0.97010344, 0, 0.46012092, 0.41960785)
 
 [node name="spawnpoint_shoot" type="Marker2D" parent="." unique_id=1711185027]
-position = Vector2(12, 12)
+position = Vector2(8, 0)
 
 [node name="hud" type="CanvasLayer" parent="." unique_id=1628121191]
 
@@ -339,6 +440,8 @@ value = 10.0
 show_percentage = false
 
 [node name="hitbox_down" type="Area2D" parent="." unique_id=1777543456]
+visible = false
+position = Vector2(0, -7.6666665)
 collision_mask = 6
 
 [node name="atack_down" type="CollisionShape2D" parent="hitbox_down" unique_id=1167761227]

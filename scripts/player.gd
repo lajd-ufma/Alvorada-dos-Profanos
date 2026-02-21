@@ -52,7 +52,6 @@ func _on_tomou_dano(value):
 		hp.value -= value
 		if hp.value<=0:
 			print("morreu")
-			#get_tree().quit()
 			#get_tree().change_scene_to_file("res://cenas/morte.tscn")
 		else:
 			var tween_damage :=get_tree().create_tween().set_loops(3)
@@ -69,11 +68,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	elif is_dashing == true:
 		velocity.y = dash_gravity
-		
+	
+	position.x = clamp(position.x, 0, 1280)
 	move_and_slide()
 	wall_logic()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	jump_logic()
 	if Input.is_action_just_pressed("special") and barra_mana.value-3>0:
 		barra_mana.value-=3
@@ -115,8 +115,6 @@ func set_animations():
 		animation_name = "move"
 	elif velocity.y < 0:
 		animation_name = "jump"
-	elif velocity.y > 10 or is_on_wall_only() or is_dashing:
-		animation_name = "fall"
 	anim.play(animation_name)
 func flip():
 	if velocity.x > 0.0:
