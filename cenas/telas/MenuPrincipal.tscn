@@ -98,6 +98,10 @@ text = "CRÉDITOS"
 layout_mode = 2
 text = "SAIR"
 
+[node name="controles_btn" parent="PanelContainer/VBoxContainer" unique_id=1899349976 instance=ExtResource("1_onaq0")]
+layout_mode = 2
+text = "CONTROLES"
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2079594746]
 texture = ExtResource("5_ayrtv")
 lifetime = 2.0
@@ -109,3 +113,4 @@ scale_amount_max = 2.5
 [connection signal="pressed" from="PanelContainer/VBoxContainer/jogar_btn" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/creditos_btn" to="." method="_on_creditos_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/sair_btn" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/controles_btn" to="." method="_on_controles_btn_pressed"]

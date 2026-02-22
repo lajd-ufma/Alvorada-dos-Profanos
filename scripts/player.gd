@@ -208,9 +208,6 @@ func dar_dano(body):
 
 func morrer():
 	GameManager.current_scene = get_tree().current_scene.scene_file_path
-	
+	get_tree().paused = true 
 	var menu_morte = load("res://cenas/telas/MenuGameOver.tscn").instantiate()
-	
 	get_tree().root.add_child(menu_morte)
-	
-	get_tree().paused = true
