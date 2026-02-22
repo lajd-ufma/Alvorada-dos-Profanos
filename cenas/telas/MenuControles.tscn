@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://c87a3dlff557d"]
 
+[ext_resource type="Script" uid="uid://chrfyk5for2dw" path="res://cenas/telas/menu_controles.gd" id="1_6de8l"]
+[ext_resource type="PackedScene" uid="uid://40qt7fo4q8yr" path="res://cenas/telas/BotaoGenerico.tscn" id="2_12jo3"]
+[ext_resource type="Texture2D" uid="uid://ca445uchvhqnh" path="res://assets/Plume 16x16.png" id="3_12jo3"]
+
 [node name="MenuControles" type="ColorRect" unique_id=1046380428]
 anchors_preset = 15
 anchor_right = 1.0
@@ -7,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08235294, 0.20784314, 0.2627451, 1)
+script = ExtResource("1_6de8l")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=240245866]
 layout_mode = 1
@@ -23,42 +28,114 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "CONTROLES"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2146471849]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=931684997]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.0
+offset_left = -165.0
 offset_top = -93.0
-offset_right = 126.0
+offset_right = 165.0
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dash" type="Label" parent="VBoxContainer" unique_id=1542808068]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer" unique_id=417414549]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 4
+columns = 2
+
+[node name="Moviment" type="Label" parent="PanelContainer/GridContainer" unique_id=2085272191]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Dash                     - Shift"
+text = "Movimentação"
 
-[node name="Jump" type="Label" parent="VBoxContainer" unique_id=1302014443]
+[node name="MovimentKeys" type="Label" parent="PanelContainer/GridContainer" unique_id=704252384]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Pulo - Espaço ou W"
+text = "A e D"
 
-[node name="Moviment" type="Label" parent="VBoxContainer" unique_id=2085272191]
+[node name="Attack" type="Label" parent="PanelContainer/GridContainer" unique_id=21365039]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Movimentação - A e D"
+text = "Ataque"
 
-[node name="Attack" type="Label" parent="VBoxContainer" unique_id=21365039]
+[node name="AttackKeys" type="Label" parent="PanelContainer/GridContainer" unique_id=735935448]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Ataque - J"
+text = "J"
 
-[node name="Special" type="Label" parent="VBoxContainer" unique_id=127066528]
+[node name="Special" type="Label" parent="PanelContainer/GridContainer" unique_id=127066528]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Especial - K"
+text = "Especial"
+
+[node name="SpecialKeys" type="Label" parent="PanelContainer/GridContainer" unique_id=232594308]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "K"
+
+[node name="Dash" type="Label" parent="PanelContainer/GridContainer" unique_id=1542808068]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dash"
+
+[node name="DashKeys" type="Label" parent="PanelContainer/GridContainer" unique_id=1737834761]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Shift"
+
+[node name="Jump" type="Label" parent="PanelContainer/GridContainer" unique_id=1302014443]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Pulo"
+
+[node name="JumpKeys" type="Label" parent="PanelContainer/GridContainer" unique_id=2074928221]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Espaço ou W"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=953085299]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -193.0
+offset_right = 52.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="voltar_btn" parent="VBoxContainer" unique_id=2112732080 instance=ExtResource("2_12jo3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = " VOLTAR "
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=374430219]
+texture = ExtResource("3_12jo3")
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(1280, 1)
+scale_amount_min = 2.0
+scale_amount_max = 2.5
+
+[connection signal="pressed" from="VBoxContainer/voltar_btn" to="." method="_on_voltar_btn_pressed"]

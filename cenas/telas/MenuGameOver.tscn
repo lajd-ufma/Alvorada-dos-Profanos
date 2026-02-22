@@ -67,7 +67,7 @@ text = "REINICIAR"
 [node name="sair_btn" parent="MenuGameOver/VBoxContainer" unique_id=1331562593 instance=ExtResource("1_vvekt")]
 process_mode = 3
 layout_mode = 2
-text = "SAIR"
+text = "MENU PRINCIPAL"
 
 [connection signal="pressed" from="MenuGameOver/VBoxContainer/reiniciar_btn" to="MenuGameOver" method="_on_reiniciar_btn_pressed"]
 [connection signal="pressed" from="MenuGameOver/VBoxContainer/sair_btn" to="MenuGameOver" method="_on_sair_btn_pressed"]
