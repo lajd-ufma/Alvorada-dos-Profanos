@@ -40,7 +40,6 @@ var dash_timer = Timer
 signal tomou_dano
 
 func _process(delta: float) -> void:
-	horizontal_movement()
 	set_animations()
 	flip()
 
@@ -64,6 +63,9 @@ func _on_tomou_dano(value):
 			set_collision_mask_value(3, true)
 
 func _physics_process(delta: float) -> void:
+	if !GameManager.can_move: return
+	
+	horizontal_movement()
 	if is_dashing == false:
 		velocity.y += gravity * delta
 	elif is_dashing == true:
@@ -74,20 +76,21 @@ func _physics_process(delta: float) -> void:
 	wall_logic()
 
 func _input(_event: InputEvent) -> void:
-	jump_logic()
-	if Input.is_action_just_pressed("special") and barra_mana.value-3>0:
-		barra_mana.value-=3
-		var shoot_instance = shoot.instantiate()
-		shoot_instance.global_position = spawnpoint_shoot.global_position
-		shoot_instance.direction = 1 if facing_right else -1
-		get_tree().root.add_child(shoot_instance)
-	elif Input.is_action_just_pressed("atack"):
-		if Input.is_action_pressed("up"):
-			is_atacking_up = true
-		elif Input.is_action_pressed("down") and not is_on_floor():
-			is_atacking_down = true
-		else:
-			is_atacking = true
+	if GameManager.can_move:
+		jump_logic()
+		if Input.is_action_just_pressed("special") and barra_mana.value-3>0:
+			barra_mana.value-=3
+			var shoot_instance = shoot.instantiate()
+			shoot_instance.global_position = spawnpoint_shoot.global_position
+			shoot_instance.direction = 1 if facing_right else -1
+			get_tree().root.add_child(shoot_instance)
+		elif Input.is_action_just_pressed("atack"):
+			if Input.is_action_pressed("up"):
+				is_atacking_up = true
+			elif Input.is_action_pressed("down") and not is_on_floor():
+				is_atacking_down = true
+			else:
+				is_atacking = true
 	
 func horizontal_movement():
 	if is_wall_jumping == false and is_dashing == false:

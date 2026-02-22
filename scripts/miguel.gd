@@ -78,6 +78,7 @@ func _ready() -> void:
 # ============================================================
 
 func _process(delta: float) -> void:
+	if !GameManager.can_move: return
 
 	match state:
 
