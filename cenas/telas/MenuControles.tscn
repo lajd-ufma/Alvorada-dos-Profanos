@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c87a3dlff557d"]
+
+[node name="MenuControles" type="ColorRect" unique_id=1046380428]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08235294, 0.20784314, 0.2627451, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=240245866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloControles" type="Label" parent="MarginContainer" unique_id=1782949235]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "CONTROLES"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2146471849]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -93.0
+offset_right = 126.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dash" type="Label" parent="VBoxContainer" unique_id=1542808068]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dash                     - Shift"
+
+[node name="Jump" type="Label" parent="VBoxContainer" unique_id=1302014443]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Pulo - Espaço ou W"
+
+[node name="Moviment" type="Label" parent="VBoxContainer" unique_id=2085272191]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Movimentação - A e D"
+
+[node name="Attack" type="Label" parent="VBoxContainer" unique_id=21365039]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Ataque - J"
+
+[node name="Special" type="Label" parent="VBoxContainer" unique_id=127066528]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Especial - K"

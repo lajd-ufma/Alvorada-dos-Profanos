@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://c7pyj8g4hgqg2" path="res://cenas/telas/menu_game_over.gd" id="1_8x2ko"]
 [ext_resource type="PackedScene" uid="uid://40qt7fo4q8yr" path="res://cenas/telas/BotaoGenerico.tscn" id="1_vvekt"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=381268192]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1317147170]
+layer = 100
 
 [node name="MenuGameOver" type="Control" parent="." unique_id=1104531241]
 process_mode = 3
@@ -25,7 +26,8 @@ offset_left = -138.0
 offset_right = 78.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0027338583, 3.008172e-09, 0.07985818, 1)
+mouse_filter = 2
+color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuGameOver" unique_id=495983600]
 layout_mode = 1
@@ -44,6 +46,7 @@ theme_override_font_sizes/font_size = 64
 text = "FIM DE JOGO"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuGameOver" unique_id=1490324371]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,13 +59,16 @@ offset_right = 4.0
 offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 theme_override_constants/separation = 36
 
 [node name="reiniciar_btn" parent="MenuGameOver/VBoxContainer" unique_id=2112732080 instance=ExtResource("1_vvekt")]
+process_mode = 3
 layout_mode = 2
 text = "REINICIAR"
 
 [node name="sair_btn" parent="MenuGameOver/VBoxContainer" unique_id=1331562593 instance=ExtResource("1_vvekt")]
+process_mode = 3
 layout_mode = 2
 text = "SAIR"
 

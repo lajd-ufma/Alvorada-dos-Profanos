@@ -11,3 +11,7 @@ func _on_creditos_pressed() -> void:
 
 func _on_sair_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_controles_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://cenas/telas/MenuControles.tscn")
