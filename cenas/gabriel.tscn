@@ -12,9 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c56j37txp404e" path="res://assets/Autorais/etc/explosao.png" id="9_wln82"]
 [ext_resource type="Texture2D" uid="uid://bsh2y38iwjruc" path="res://assets/Autorais/Gabriel-Serafim/morto.png" id="10_rkwu1"]
 [ext_resource type="Texture2D" uid="uid://dir4cmtdfuipc" path="res://assets/Autorais/deus entre aspas com d minusculo mim perdoe ingreja.png" id="12_aqlx7"]
+[ext_resource type="AudioStream" uid="uid://cj6thjl205ldp" path="res://assets/Autorais/Sounds/Sound effects/impacto no chao/322504__liamg_sfx__explosion-6a.mp3" id="13_aqlx7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wln82"]
-radius = 25.0
+radius = 28.75
 height = 95.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppkud"]
@@ -27,7 +28,7 @@ shader_parameter/color_end = Color(1, 0.2, 0.2, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tds4j"]
 radius = 26.5
-height = 98.0
+height = 96.37976
 
 [sub_resource type="Animation" id="Animation_tds4j"]
 length = 0.001
@@ -295,6 +296,7 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Pivot/gabriel_body" unique_id=26768209]
 rotation = 1.5707964
+scale = Vector2(1.0163487, 1.0542113)
 shape = SubResource("CapsuleShape2D_wln82")
 debug_color = Color(3.85046e-07, 0.6107864, 0.6352338, 0.41960785)
 
@@ -312,6 +314,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Pivot/gabriel_body/hitbox" unique_id=1261043237]
 rotation = 1.5707964
+scale = Vector2(1.1544576, 1.0738771)
 shape = SubResource("CapsuleShape2D_tds4j")
 debug_color = Color(0.9317671, 2.9359759e-05, 0.6534741, 0.41960785)
 
@@ -327,6 +330,10 @@ shape = SubResource("CapsuleShape2D_rkwu1")
 scale = Vector2(4, 4)
 enabled = false
 texture = ExtResource("12_aqlx7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Path2D/PathFollow2D/Pivot/gabriel_body" unique_id=1068515851]
+stream = ExtResource("13_aqlx7")
+volume_db = 10.0
 
 [node name="hp" type="ProgressBar" parent="Path2D/PathFollow2D/Pivot" unique_id=366702955]
 offset_left = -78.0

@@ -53,6 +53,7 @@ extends Node2D
 @onready var hp: ProgressBar = $Path2D/PathFollow2D/Pivot/hp
 @onready var body: CharacterBody2D = $Path2D/PathFollow2D/Pivot/gabriel_body
 @onready var collision_shape_2d: CollisionShape2D = $Path2D/PathFollow2D/Pivot/gabriel_body/CollisionShape2D
+@onready var audio_stream_player: AudioStreamPlayer = $Path2D/PathFollow2D/Pivot/gabriel_body/AudioStreamPlayer
 
 # ============================================================
 # ESTADO
@@ -171,7 +172,6 @@ func slam_attack_sequence() -> void:
 
 	await shake_warning()
 	await slam_down()
-
 	spawn_shockwaves()
 
 	await get_tree().create_timer(vulnerable_time).timeout
@@ -285,7 +285,7 @@ func slam_down() -> void:
 		pivot.global_position.y += slam_speed * get_process_delta_time()
 
 		await get_tree().process_frame
-
+	audio_stream_player.play()
 	pivot.global_position.y = ground_y
 	hitbox_collision_shape_2d.disabled = true
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bk6rhm1rjibhl" path="res://assets/Interactables/Sprites/spikes_spritesheet.png" id="2_dg1ug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bruyc"]
+size = Vector2(17.187504, 13.281256)
 
 [sub_resource type="Animation" id="Animation_i2q7w"]
 length = 0.001
@@ -93,12 +94,13 @@ _data = {
 }
 
 [node name="ShockWave" type="Area2D" unique_id=1908039597]
-scale = Vector2(1.6, 1.6)
+scale = Vector2(3, 3)
 collision_layer = 4
 script = ExtResource("1_m2s5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=286850698]
-scale = Vector2(1.6, 1.6)
+position = Vector2(-8.940694e-07, 3.1249995)
+scale = Vector2(1.5999991, 1.5999991)
 shape = SubResource("RectangleShape2D_bruyc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=879366148]

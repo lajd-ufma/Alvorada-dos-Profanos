@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj6thjl205ldp"
+path="res://.godot/imported/322504__liamg_sfx__explosion-6a.mp3-937e4bf17a88f47b371bf84958111c01.mp3str"
+
+[deps]
+
+source_file="res://assets/Autorais/Sounds/Sound effects/impacto no chao/322504__liamg_sfx__explosion-6a.mp3"
+dest_files=["res://.godot/imported/322504__liamg_sfx__explosion-6a.mp3-937e4bf17a88f47b371bf84958111c01.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

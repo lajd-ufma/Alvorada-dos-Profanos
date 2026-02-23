@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bxmpamh0evghn" path="res://assets/Autorais/Sounds/Sound effects/impacto no chao/750822__artninja__custom_short_explosion_impact_sound(precisa de crédito).wav" id="7_54faa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbfpt"]
-radius = 47.539455
+radius = 54.022507
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usr7g"]
 radius = 56.22277
@@ -206,7 +206,6 @@ hframes = 3
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/rafael_body" unique_id=201443341]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_fbfpt")
 
 [node name="hitbox" type="Area2D" parent="Path2D/PathFollow2D/rafael_body" unique_id=2002262972]
