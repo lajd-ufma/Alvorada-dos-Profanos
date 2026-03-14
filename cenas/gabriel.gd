@@ -54,6 +54,8 @@ extends Node2D
 @onready var body: CharacterBody2D = $Path2D/PathFollow2D/Pivot/gabriel_body
 @onready var collision_shape_2d: CollisionShape2D = $Path2D/PathFollow2D/Pivot/gabriel_body/CollisionShape2D
 @onready var audio_stream_player: AudioStreamPlayer = $Path2D/PathFollow2D/Pivot/gabriel_body/AudioStreamPlayer
+@onready var sprite: Sprite2D = $Path2D/PathFollow2D/Pivot/gabriel_body/Sprite2D
+
 
 # ============================================================
 # ESTADO
@@ -372,6 +374,9 @@ func _on_tomou_dano(value):
 		is_dead = true
 		call_deferred("_morrer")
 	else:
+		sprite.modulate = Color(1, 0, 0) # vermelho
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(1, 1, 1) # normal
 		var damage_tween := get_tree().create_tween()
 		damage_tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 

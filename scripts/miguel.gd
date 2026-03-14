@@ -47,6 +47,8 @@ signal tomou_dano
 @onready var animation_player: AnimationPlayer = $"Path Normal Track/PathFollow2D/miguel_body/AnimationPlayer"
 @onready var grito_sound: AudioStreamPlayer2D = $"Path Normal Track/PathFollow2D/miguel_body/grito_sound"
 @onready var cpu_particles_2d: CPUParticles2D = $"Path Normal Track/PathFollow2D/miguel_body/CPUParticles2D"
+@onready var sprite: Sprite2D = $"Path Normal Track/PathFollow2D/miguel_body/Sprite2D"
+
 
 # ============================================================
 # MÁQUINA DE ESTADOS
@@ -300,6 +302,9 @@ func _on_tomou_dano(value):
 		set_physics_process(true)
 		call_deferred("_morrer")
 	else:
+		sprite.modulate = Color(1, 0, 0) # vermelho
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(1, 1, 1) # normal
 		var damage_tween := get_tree().create_tween()
 		damage_tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 
