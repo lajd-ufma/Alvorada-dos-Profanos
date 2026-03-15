@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D 
 
 @export_category("movement variable")
 @export var move_speed = 200.0
@@ -10,6 +10,9 @@ var movement = Vector2()
 @export var jump_speed = 360.0
 @export var acceleration = 390.0
 @export var jump_amount = 2
+
+# NOVO — limite de altura
+@export var max_height: float = -300.0
 
 @export_category("wall jump variable")
 @export var wall_slide = 150
@@ -80,6 +83,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	wall_logic()
 
+	# NOVO — trava altura máxima
+	if global_position.y < max_height:
+		global_position.y = max_height
+		velocity.y = 0
+
 func _input(_event: InputEvent) -> void:
 	if GameManager.can_move:
 		jump_logic()
@@ -94,7 +102,6 @@ func _input(_event: InputEvent) -> void:
 				is_atacking_down = true
 			else:
 				is_atacking = true
-	
 func horizontal_movement():
 	if is_wall_jumping == false and is_dashing == false:
 		movement = Input.get_axis("ui_left", "ui_right")

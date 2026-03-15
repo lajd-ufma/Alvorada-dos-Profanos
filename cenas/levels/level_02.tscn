@@ -165,3 +165,4 @@ shake_time = 1.5
 
 [node name="player" parent="generic_level" unique_id=832522077 instance=ExtResource("2_p6iee")]
 position = Vector2(138, 591)
+max_height = 50.0
