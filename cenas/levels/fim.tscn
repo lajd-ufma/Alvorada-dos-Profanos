@@ -73,6 +73,9 @@ shape = SubResource("RectangleShape2D_tv6cl")
 [node name="player" parent="." unique_id=832522077 instance=ExtResource("1_7wrvp")]
 position = Vector2(93, 581)
 
+[node name="hud" parent="player" index="6" unique_id=1628121191]
+visible = false
+
 [node name="deus" type="Node2D" parent="." unique_id=428676580]
 position = Vector2(1089, 469)
 
@@ -116,4 +119,5 @@ visible = false
 [node name="portal" parent="generic_level" index="4" unique_id=57319832]
 position = Vector2(63, 0)
 
+[editable path="player"]
 [editable path="generic_level"]

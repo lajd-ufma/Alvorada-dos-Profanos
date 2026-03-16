@@ -16,7 +16,7 @@ run/main_scene="uid://y6q8lsw4uik7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.060938574, 0.08079956, 0.19572842, 1)
 boot_splash/stretch_mode=0
-boot_splash/image="uid://3dv8d5v4g4m3"
+boot_splash/image="uid://bl45pas78u02r"
 config/icon="uid://ca445uchvhqnh"
 
 [autoload]
@@ -91,7 +91,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
 window/size/resizable=false
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]

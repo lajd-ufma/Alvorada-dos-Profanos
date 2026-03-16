@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://qbu8tev0pyh5" path="res://assets/New Piskel (2).png" id="6_10gww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w3gl"]
-size = Vector2(1171, 87)
+size = Vector2(1171, 102)
 
 [node name="level03" type="Node" unique_id=1323927398]
 script = ExtResource("1_i7t7g")
@@ -29,13 +29,13 @@ script = ExtResource("5_i7t7g")
 active_time = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="generic_level/hitbox_grito" unique_id=626821980]
-position = Vector2(647.5, 581.5)
+position = Vector2(647.5, 589)
 shape = SubResource("RectangleShape2D_0w3gl")
 
 [node name="Sprite2D" type="Sprite2D" parent="generic_level/hitbox_grito" unique_id=112414039]
 modulate = Color(0.9990464, 0.7542235, 1, 0.22745098)
-position = Vector2(645.5, 583.5)
-scale = Vector2(36.78125, 2.7187483)
+position = Vector2(645.5, 588)
+scale = Vector2(36.78125, 2.9999986)
 texture = ExtResource("6_10gww")
 
 [node name="player" parent="generic_level" unique_id=832522077 instance=ExtResource("2_j4d2i")]

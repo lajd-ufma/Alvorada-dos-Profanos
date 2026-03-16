@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicManager.final()
 	Dialogic.timeline_ended.connect(terminou)
 	DialogsManager.start_dialog("Deus")
 func terminou():
