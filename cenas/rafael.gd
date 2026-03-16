@@ -25,6 +25,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $Path2D/PathFollow2D/rafael_body/AnimationPlayer
 @onready var collision_shape_2d: CollisionShape2D = $Path2D/PathFollow2D/rafael_body/CollisionShape2D
 @onready var pancadanochao_sound: AudioStreamPlayer2D = $Path2D/PathFollow2D/rafael_body/pancadanochao_sound
+@onready var sprite: Sprite2D = $Path2D/PathFollow2D/rafael_body/Sprite2D
 
 signal tomou_dano
 
@@ -255,6 +256,9 @@ func _on_tomou_dano(value):
 		set_physics_process(true)
 		call_deferred("_morrer")
 	else:
+		sprite.modulate = Color(1.0, 0.315, 0.25, 1.0) # vermelho
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(1, 1, 1) # normal
 		var damage_tween := get_tree().create_tween()
 		damage_tween.tween_property(self, "modulate", Color.GRAY, 0.2)
 

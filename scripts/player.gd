@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D 
 
 @export_category("movement variable")
 @export var move_speed = 200.0
@@ -10,6 +10,9 @@ var movement = Vector2()
 @export var jump_speed = 360.0
 @export var acceleration = 390.0
 @export var jump_amount = 2
+
+# NOVO — limite de altura
+@export var max_height: float = -300.0
 
 @export_category("wall jump variable")
 @export var wall_slide = 150
@@ -57,6 +60,7 @@ func _on_tomou_dano(value):
 			print("morreu")
 			call_deferred("morrer")
 		else:
+			hit_stop(0.02, 0.1)
 			var tween_damage :=get_tree().create_tween().set_loops(3)
 			var tween_knockback :=get_tree().create_tween().set_parallel(true)
 			set_collision_mask_value(3, false)
@@ -79,6 +83,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	wall_logic()
 
+	# NOVO — trava altura máxima
+	if global_position.y < max_height:
+		global_position.y = max_height
+		velocity.y = 0
+
 func _input(_event: InputEvent) -> void:
 	if GameManager.can_move:
 		jump_logic()
@@ -93,7 +102,6 @@ func _input(_event: InputEvent) -> void:
 				is_atacking_down = true
 			else:
 				is_atacking = true
-	
 func horizontal_movement():
 	if is_wall_jumping == false and is_dashing == false:
 		movement = Input.get_axis("ui_left", "ui_right")
@@ -216,6 +224,7 @@ func _on_hitbox_down_body_entered(body: Node2D) -> void:
 
 func dar_dano(body):
 	if body.has_signal("tomou_dano"):
+		hit_stop(0.02, 0.2)
 		body.emit_signal("tomou_dano", 10)
 		barra_mana.value += 1
 
@@ -224,3 +233,8 @@ func morrer():
 	get_tree().paused = true 
 	var menu_morte = load("res://cenas/telas/MenuGameOver.tscn").instantiate()
 	get_tree().root.add_child(menu_morte)
+
+func hit_stop(duration := 0.05, slow := 0.0):
+	Engine.time_scale = slow
+	await get_tree().create_timer(duration, true).timeout
+	Engine.time_scale = 1.0
